@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Vichiya | Bienestar y Reprogramación Mental para Mujeres</title>
+    <title id="meta-title">La Vichiya | Bienestar y Reprogramación Mental para Mujeres</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-    <!-- FontAwesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -15,17 +14,17 @@
                 extend: {
                     colors: {
                         brand: {
-                            light: '#fdfbf7', // Fondo muy suave
-                            rose: '#f4e3e3',  // Rosa empolvado claro
-                            peach: '#f0d2c4', // Melocotón suave
-                            earth: '#c4a484', // Tierra suave
-                            text: '#4a403a',  // Texto oscuro cálido
-                            accent: '#8b5a5a' // Acento burdeos suave
+                            light: '#fdfbf7',
+                            rose: '#f4e3e3',
+                            peach: '#f0d2c4',
+                            earth: '#c4a484',
+                            text: '#4a403a',
+                            accent: '#8b5a5a'
                         }
                     },
                     fontFamily: {
-                        sans: ['Lora', 'serif'], // Fuente principal para textos largos, suave y legible
-                        heading: ['Playfair Display', 'serif'], // Títulos elegantes
+                        sans: ['Lora', 'serif'],
+                        heading: ['Playfair Display', 'serif'],
                     }
                 }
             }
@@ -40,407 +39,1045 @@
         h1, h2, h3, h4, .font-heading {
             font-family: 'Playfair Display', serif;
         }
-        
-        /* Animaciones suaves */
         .fade-in {
-            animation: fadeIn 1.5s ease-in-out;
+            animation: fadeIn 1.2s ease-in-out;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
         .blob-bg {
             position: absolute;
             z-index: -1;
             filter: blur(40px);
             opacity: 0.6;
         }
+        .hidden-view {
+            display: none !important;
+        }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden">
 
-    <nav class="fixed w-full z-50 bg-brand-light/90 backdrop-blur-md border-b border-brand-rose transition-all duration-300" id="navbar">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="font-heading font-bold text-2xl text-brand-accent tracking-wide">
-                        La Vichiya
-                    </a>
+    <div id="public-view">
+        <nav class="fixed w-full z-50 bg-brand-light/90 backdrop-blur-md border-b border-brand-rose transition-all duration-300" id="navbar">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-20 items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="#" class="font-heading font-bold text-2xl text-brand-accent tracking-wide platform-name">
+                            La Vichiya
+                        </a>
+                    </div>
+                    <div class="hidden md:flex space-x-8 items-center">
+                        <a href="#sobre-mi" class="text-brand-text hover:text-brand-accent transition-colors duration-300">Mi Historia</a>
+                        <a href="#servicios" class="text-brand-text hover:text-brand-accent transition-colors duration-300">Acompañamiento</a>
+                        <a href="#testimonios" class="text-brand-text hover:text-brand-accent transition-colors duration-300">Testimonios</a>
+                        <a href="#contacto" class="bg-brand-accent text-white px-6 py-2 rounded-full hover:bg-brand-text transition-colors duration-300 shadow-md">Empezar a Sanar</a>
+                    </div>
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn" class="text-brand-text hover:text-brand-accent focus:outline-none">
+                            <i class="fas fa-bars text-2xl"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#sobre-mi" class="text-brand-text hover:text-brand-accent transition-colors duration-300">Mi Historia</a>
-                    <a href="#servicios" class="text-brand-text hover:text-brand-accent transition-colors duration-300">Acompañamiento</a>
-                    <a href="#testimonios" class="text-brand-text hover:text-brand-accent transition-colors duration-300">Testimonios</a>
-                    <a href="#contacto" class="bg-brand-accent text-white px-6 py-2 rounded-full hover:bg-brand-text transition-colors duration-300 shadow-md">Empezar a Sanar</a>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden bg-brand-light border-b border-brand-rose">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#sobre-mi" class="block px-3 py-2 text-brand-text hover:bg-brand-rose rounded-md">Mi Historia</a>
+                    <a href="#servicios" class="block px-3 py-2 text-brand-text hover:bg-brand-rose rounded-md">Acompañamiento</a>
+                    <a href="#testimonios" class="block px-3 py-2 text-brand-text hover:bg-brand-rose rounded-md">Testimonios</a>
+                    <a href="#contacto" class="block px-3 py-2 text-brand-accent font-semibold hover:bg-brand-rose rounded-md">Empezar a Sanar</a>
                 </div>
-                <!-- Menú móvil -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-brand-text hover:text-brand-accent focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
+            </div>
+        </nav>
+
+        <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+            <div class="blob-bg bg-brand-peach w-96 h-96 rounded-full top-0 left-[-10%]"></div>
+            <div class="blob-bg bg-brand-rose w-80 h-80 rounded-full bottom-10 right-[-5%]"></div>
+
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 fade-in">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-brand-text leading-tight mb-6" data-editable="hero_title">
+                        Sana tus heridas, <br>
+                        <span class="text-brand-accent italic">reprograma tu mente</span> <br>
+                        y recupera tu poder.
+                    </h1>
+                    <p class="text-lg md:text-xl text-brand-text/80 mb-10" data-editable="hero_subtitle">
+                        Hola hermosa. Soy La Vichiya. Te acompaño a atravesar el dolor sin soltarte la mano, transformando traumas en fuerza y construyendo juntas hábitos que nutran tu nueva vida. Un espacio seguro, empático y enfocado en que vuelvas a florecer.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#contacto" class="bg-brand-accent text-white px-8 py-4 rounded-full text-lg hover:bg-brand-text transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            Quiero una sesión de valoración
+                        </a>
+                        <a href="#sobre-mi" class="bg-white text-brand-accent border border-brand-accent px-8 py-4 rounded-full text-lg hover:bg-brand-rose transition-all duration-300">
+                            Conoce cómo te ayudo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-brand-rose/30">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-3 gap-10">
+                    <div class="text-center bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-16 h-16 bg-brand-peach/50 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-accent text-2xl">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold mb-4" data-editable="card1_title">Empatía Profunda</h3>
+                        <p class="text-brand-text/80" data-editable="card1_text">Entiendo el peso de las heridas. Aquí no hay prisas ni juicios, solo un abrazo virtual y comprensión absoluta de tus tiempos.</p>
+                    </div>
+                    <div class="text-center bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-16 h-16 bg-brand-peach/50 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-accent text-2xl">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold mb-4" data-editable="card2_title">Reprogramación Real</h3>
+                        <p class="text-brand-text/80" data-editable="card2_text">No solo hablamos. Cambiamos la forma en que tu cerebro procesa el dolor y el miedo, instalando nuevas creencias que te empoderen.</p>
+                    </div>
+                    <div class="text-center bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-16 h-16 bg-brand-peach/50 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-accent text-2xl">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold mb-4" data-editable="card3_title">Hábitos Sostenibles</h3>
+                        <p class="text-brand-text/80" data-editable="card3_text">La sanación requiere acción diaria. Construiremos rutinas de amor propio y cuidado que sean realistas y transformadoras para tu día a día.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre-mi" class="py-24">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row items-center gap-16">
+                    <div class="md:w-1/2 relative">
+                        <div class="absolute inset-0 bg-brand-peach rounded-[2rem] transform translate-x-4 translate-y-4"></div>
+                        <img id="img-about" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Asesora de Bienestar" class="relative z-10 rounded-[2rem] object-cover w-full h-[500px] shadow-xl" onerror="this.src='https://placehold.co/600x800/f4e3e3/4a403a?text=Foto+Asesora';">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h2 class="font-heading text-3xl md:text-4xl font-bold text-brand-text mb-6" data-editable="about_title">No estás rota, estás en transformación.</h2>
+                        <p class="mb-4 text-lg" data-editable="about_p1">Sé lo que se siente estar atrapada en patrones dolorosos y sentir que crear hábitos saludables es imposible cuando hay tormenta interna.</p>
+                        <p class="mb-4 text-lg" data-editable="about_p2">Mi enfoque no es el "positivismo tóxico". Entraremos juntas a observar el dolor, y desde ahí, con reprogramación mental, limpiaremos el camino.</p>
+                        <p class="mb-8 text-lg" data-editable="about_p3">Quiero verte sonreír desde el alma. Vamos a construir tu mejor versión, un paso a la vez.</p>
+                        <div class="border-l-4 border-brand-accent pl-6 py-2 italic text-brand-text/70 text-lg" data-editable="about_quote">
+                            "El dolor es inevitable, pero el sufrimiento prolongado es opcional."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="py-24 bg-brand-text text-brand-light">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4" data-editable="services_heading">Mi Acompañamiento para Ti</h2>
+                    <p class="text-brand-light/80 max-w-2xl mx-auto text-lg" data-editable="services_subheading">Programas diseñados para abrazar tu vulnerabilidad.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="group bg-white/10 p-8 rounded-2xl border border-brand-light/20 backdrop-blur-sm hover:bg-white/15 transition-all duration-300 flex flex-col h-full">
+                        <div class="w-full h-48 mb-6 overflow-hidden rounded-xl">
+                             <img id="img-service1" src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Programa Renacer" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/8b5a5a/ffffff?text=Programa';">
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold text-brand-peach mb-4" data-editable="service1_title">Programa "Renacer"</h3>
+                        <p class="mb-6 opacity-90 flex-grow" data-editable="service1_desc">Ideal para mujeres atravesando dolor agudo o separaciones recientes.</p>
+                        <a href="#contacto" class="mt-auto text-brand-peach hover:text-white font-semibold flex items-center transition-colors w-max">
+                            Saber más <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="group bg-white/10 p-8 rounded-2xl border border-brand-light/20 backdrop-blur-sm hover:bg-white/15 transition-all duration-300 flex flex-col h-full">
+                        <div class="w-full h-48 mb-6 overflow-hidden rounded-xl">
+                            <img id="img-service2" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mentoría Construye tu Luz" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/c4a484/ffffff?text=Mentoria';">
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold text-brand-rose mb-4" data-editable="service2_title">Mentoría "Construye tu Luz"</h3>
+                        <p class="mb-6 opacity-90 flex-grow" data-editable="service2_desc">Para cuando estás lista para avanzar y sostener nuevos hábitos.</p>
+                        <a href="#contacto" class="mt-auto text-brand-rose hover:text-white font-semibold flex items-center transition-colors w-max">
+                            Saber más <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonios" class="py-24 bg-brand-light relative overflow-hidden">
+            <div class="blob-bg bg-brand-rose w-[30rem] h-[30rem] rounded-full top-20 right-[-10%] opacity-40"></div>
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-brand-text mb-4">Voces que Sanaron</h2>
+                    <p class="text-brand-text/80 max-w-2xl mx-auto text-lg">El cambio es posible. Ellas ya caminaron este sendero.</p>
+                </div>
+                <div id="public-testimonials-container" class="grid md:grid-cols-3 gap-8">
+                    <!-- Dynamic Testimonials -->
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="py-24 bg-brand-peach/20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="font-heading text-3xl md:text-5xl font-bold text-brand-text mb-6">Da el primer paso hacia ti misma</h2>
+                <p class="text-xl text-brand-text/80 mb-10">Agenda una sesión de descubrimiento de 30 minutos sin costo.</p>
+                
+                <form class="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg text-left" id="contact-form">
+                    <div class="mb-6">
+                        <label for="name" class="block text-sm font-medium text-brand-text mb-2">Tu nombre hermoso</label>
+                        <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-accent focus:ring focus:ring-brand-accent/20 outline-none transition-all" required placeholder="Ej: Valentina">
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-sm font-medium text-brand-text mb-2">Tu mejor correo</label>
+                        <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-accent focus:ring focus:ring-brand-accent/20 outline-none transition-all" required placeholder="correo@ejemplo.com">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-sm font-medium text-brand-text mb-2">Cuéntame brevemente, ¿en qué te puedo apoyar hoy?</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-accent focus:ring focus:ring-brand-accent/20 outline-none transition-all resize-none" required placeholder="Siento que necesito ayuda con..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-brand-accent text-white font-bold py-4 rounded-lg hover:bg-brand-text transition-colors duration-300 shadow-md">
+                        Solicitar Sesión Gratuita
+                    </button>
+                    <div id="form-msg-container" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg text-center">
+                        <p id="form-msg" class="text-green-800 font-medium"></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <footer class="bg-brand-text text-brand-light py-12 relative">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-6 md:mb-0">
+                        <span class="font-heading font-bold text-2xl text-brand-rose tracking-wide platform-name">La Vichiya</span>
+                        <p class="text-brand-light/60 mt-2 text-sm">Acompañamiento compasivo, resultados reales.</p>
+                    </div>
+                    <div class="flex space-x-6 items-center" id="public-social-links">
+                        <!-- Redes dinámicas -->
+                    </div>
+                </div>
+                <div class="border-t border-brand-light/20 mt-8 pt-8 text-center text-sm text-brand-light/50 relative">
+                    &copy; 2026 <span class="platform-name">La Vichiya</span>. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+
+        <button id="floating-admin-btn" title="Panel de Administradora" class="fixed bottom-6 right-6 z-50 bg-brand-accent text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:bg-brand-text transition-all duration-300 transform hover:scale-105 focus:outline-none ring-4 ring-brand-peach/40">
+            <i class="fas fa-key text-xl"></i>
+        </button>
+    </div>
+
+    <div id="admin-login-view" class="hidden-view min-h-screen bg-brand-rose/30 flex items-center justify-center px-4">
+        <div class="max-w-md w-full bg-white p-8 rounded-3xl shadow-xl border border-brand-rose">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-brand-peach/50 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-accent text-2xl">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h2 class="font-heading text-2xl font-bold text-brand-text">Acceso de Administradora</h2>
+                <p class="text-sm text-brand-text/70 mt-1">Ingresa tu contraseña para gestionar la plataforma</p>
+                <div class="mt-3 p-3 bg-brand-light rounded-xl border border-brand-peach text-xs text-brand-text">
+                    <p class="font-bold text-brand-accent mb-1"><i class="fas fa-info-circle mr-1"></i> Credenciales por defecto:</p>
+                    <p>Contraseña inicial: <code class="bg-white px-2 py-0.5 rounded font-mono text-brand-accent font-bold">vichiya2026</code></p>
+                </div>
+            </div>
+            <form id="login-form">
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-brand-text mb-2">Contraseña de Administradora</label>
+                    <input type="password" id="admin-pass-input" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-accent focus:ring focus:ring-brand-accent/20 outline-none" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="w-full bg-brand-accent text-white font-bold py-3.5 rounded-xl hover:bg-brand-text transition-colors shadow-md">
+                    Entrar al Panel
+                </button>
+                <div id="login-error" class="hidden mt-4 text-center text-red-500 text-sm font-medium"></div>
+            </form>
+            <div class="mt-6 text-center">
+                <button id="btn-back-home" class="text-sm text-brand-accent hover:underline">
+                    <i class="fas fa-arrow-left mr-1"></i> Volver al sitio público
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="admin-dashboard-view" class="hidden-view min-h-screen bg-brand-rose/20 pb-20">
+        <nav class="bg-brand-text text-brand-light shadow-md">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex items-center">
+                        <i class="fas fa-crown text-brand-peach text-xl mr-3"></i>
+                        <span class="font-heading font-bold text-xl">Rincón Secreto de <span class="platform-name">La Vichiya</span></span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button id="btn-admin-logout" class="bg-red-500/20 hover:bg-red-500/30 text-red-200 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors">
+                            <i class="fas fa-sign-out-alt mr-1"></i> Salir
+                        </button>
+                        <button id="btn-return-site" class="bg-brand-light/10 hover:bg-brand-light/20 text-brand-light px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                            <i class="fas fa-external-link-alt mr-2"></i>Ver sitio
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+            <div class="flex flex-wrap gap-2 mb-8 border-b border-brand-earth/30 pb-2">
+                <button id="tab-mensajes" class="px-5 py-2.5 font-medium text-brand-text bg-white rounded-t-lg border-b-2 border-brand-accent focus:outline-none shadow-sm">
+                    <i class="fas fa-envelope mr-2"></i>Mensajes
+                </button>
+                <button id="tab-testimonios" class="px-5 py-2.5 font-medium text-brand-text/70 bg-white/50 rounded-t-lg hover:text-brand-text focus:outline-none">
+                    <i class="fas fa-comments mr-2"></i>Testimonios
+                </button>
+                <button id="tab-textos" class="px-5 py-2.5 font-medium text-brand-text/70 bg-white/50 rounded-t-lg hover:text-brand-text focus:outline-none">
+                    <i class="fas fa-pen-nib mr-2"></i>Textos y Plataforma
+                </button>
+                <button id="tab-fotos" class="px-5 py-2.5 font-medium text-brand-text/70 bg-white/50 rounded-t-lg hover:text-brand-text focus:outline-none">
+                    <i class="fas fa-images mr-2"></i>Gestión de Fotos (JPG)
+                </button>
+                <button id="tab-redes" class="px-5 py-2.5 font-medium text-brand-text/70 bg-white/50 rounded-t-lg hover:text-brand-text focus:outline-none">
+                    <i class="fas fa-share-alt mr-2"></i>Redes Sociales
+                </button>
+                <button id="tab-seguridad" class="px-5 py-2.5 font-medium text-brand-text/70 bg-white/50 rounded-t-lg hover:text-brand-text focus:outline-none">
+                    <i class="fas fa-key mr-2"></i>Contraseña y Reglas
+                </button>
+            </div>
+
+            <div id="view-mensajes" class="bg-white rounded-2xl shadow-sm p-6 border border-brand-rose">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-heading font-bold text-brand-text">Bandeja de Entrada</h2>
+                    <span id="inbox-count" class="bg-brand-peach text-brand-text text-xs font-bold px-3 py-1 rounded-full">0 mensajes</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-brand-rose/50">
+                        <thead class="bg-brand-light">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-brand-text/70 uppercase">Fecha</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-brand-text/70 uppercase">Nombre</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-brand-text/70 uppercase">Contacto</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-brand-text/70 uppercase">Mensaje</th>
+                                <th class="px-6 py-3 text-right text-xs font-medium text-brand-text/70 uppercase">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-messages-list" class="bg-white divide-y divide-brand-rose/30"></tbody>
+                    </table>
+                    <div id="no-messages" class="text-center py-10 text-brand-text/50 hidden">
+                        <i class="fas fa-inbox text-4xl mb-3 text-brand-rose"></i>
+                        <p>No tienes mensajes nuevos todavía.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-testimonios" class="hidden-view bg-white rounded-2xl shadow-sm p-6 border border-brand-rose">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-heading font-bold text-brand-text">Mis Testimonios</h2>
+                    <button id="btn-add-testimonio" class="bg-brand-accent text-white px-4 py-2 rounded-lg text-sm hover:bg-brand-text transition-colors shadow-sm">
+                        <i class="fas fa-plus mr-2"></i>Nuevo Testimonio
                     </button>
                 </div>
-            </div>
-        </div>
-        <!-- Dropdown móvil -->
-        <div id="mobile-menu" class="hidden md:hidden bg-brand-light border-b border-brand-rose">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#sobre-mi" class="block px-3 py-2 text-brand-text hover:bg-brand-rose rounded-md">Mi Historia</a>
-                <a href="#servicios" class="block px-3 py-2 text-brand-text hover:bg-brand-rose rounded-md">Acompañamiento</a>
-                <a href="#testimonios" class="block px-3 py-2 text-brand-text hover:bg-brand-rose rounded-md">Testimonios</a>
-                <a href="#contacto" class="block px-3 py-2 text-brand-accent font-semibold hover:bg-brand-rose rounded-md">Empezar a Sanar</a>
-            </div>
-        </div>
-    </nav>
-
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <!-- Formas orgánicas de fondo -->
-        <div class="blob-bg bg-brand-peach w-96 h-96 rounded-full top-0 left-[-10%]"></div>
-        <div class="blob-bg bg-brand-rose w-80 h-80 rounded-full bottom-10 right-[-5%]"></div>
-
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 fade-in">
-            <div class="text-center max-w-3xl mx-auto">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-brand-text leading-tight mb-6">
-                    Sana tus heridas, <br>
-                    <span class="text-brand-accent italic">reprograma tu mente</span> <br>
-                    y recupera tu poder.
-                </h1>
-                <p class="text-lg md:text-xl text-brand-text/80 mb-10">
-                    Hola hermosa. Soy La Vichiya. Te acompaño a atravesar el dolor sin soltarte la mano, transformando traumas en fuerza y construyendo juntas hábitos que nutran tu nueva vida. Un espacio seguro, empático y enfocado en que vuelvas a florecer.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#contacto" class="bg-brand-accent text-white px-8 py-4 rounded-full text-lg hover:bg-brand-text transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        Quiero una sesión de valoración
-                    </a>
-                    <a href="#sobre-mi" class="bg-white text-brand-accent border border-brand-accent px-8 py-4 rounded-full text-lg hover:bg-brand-rose transition-all duration-300">
-                        Conoce cómo te ayudo
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-brand-rose/30">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="text-center bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-16 h-16 bg-brand-peach/50 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-accent text-2xl">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3 class="font-heading text-xl font-bold mb-4">Empatía Profunda</h3>
-                    <p class="text-brand-text/80">Entiendo el peso de las heridas. Aquí no hay prisas ni juicios, solo un abrazo virtual y comprensión absoluta de tus tiempos.</p>
-                </div>
-                <div class="text-center bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-16 h-16 bg-brand-peach/50 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-accent text-2xl">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="font-heading text-xl font-bold mb-4">Reprogramación Real</h3>
-                    <p class="text-brand-text/80">No solo hablamos. Cambiamos la forma en que tu cerebro procesa el dolor y el miedo, instalando nuevas creencias que te empoderen.</p>
-                </div>
-                <div class="text-center bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-16 h-16 bg-brand-peach/50 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-accent text-2xl">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3 class="font-heading text-xl font-bold mb-4">Hábitos Sostenibles</h3>
-                    <p class="text-brand-text/80">La sanación requiere acción diaria. Construiremos rutinas de amor propio y cuidado que sean realistas y transformadoras para tu día a día.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="te-suena-familiar" class="py-24 bg-white relative overflow-hidden">
-        <div class="blob-bg bg-brand-peach w-64 h-64 rounded-full top-10 right-[-5%] opacity-30"></div>
-        <div class="blob-bg bg-brand-rose w-48 h-48 rounded-full bottom-10 left-[-5%] opacity-20"></div>
-        
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="font-heading text-3xl md:text-4xl font-bold text-brand-text mb-6">Dime si esto te suena familiar...</h2>
-                <p class="text-lg text-brand-text/80">
-                    A veces pensamos que somos las únicas lidiando con estas batallas en silencio. Pero quiero que sepas que esto que sientes es válido, es muy común, y lo más importante: <strong>tiene solución</strong>.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Tema 1 -->
-                <div class="bg-brand-light p-8 rounded-2xl border border-brand-rose/50 hover:shadow-md transition-shadow group">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-brand-rose/50 rounded-full flex items-center justify-center text-brand-accent text-xl mr-4 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-battery-quarter"></i>
+                <div id="form-testimonio-container" class="hidden bg-brand-light p-6 rounded-xl border border-brand-peach mb-8">
+                    <h3 class="font-heading font-bold text-lg mb-4 text-brand-text" id="form-testimonio-title">Añadir Testimonio</h3>
+                    <form id="admin-testimonio-form">
+                        <input type="hidden" id="testimonio-id">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-brand-text mb-1">Nombre (o iniciales)</label>
+                            <input type="text" id="t-name" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:border-brand-accent outline-none" required>
                         </div>
-                        <h3 class="font-heading text-xl font-bold text-brand-text">Agotamiento y Culpa</h3>
-                    </div>
-                    <p class="text-brand-text/80">Vives sosteniendo a los demás, siendo "la fuerte". Y cuando por fin decides descansar o ponerte como prioridad, te inunda una culpa paralizante. Sientes que el autocuidado es egoísmo.</p>
-                </div>
-
-                <!-- Tema 2 -->
-                <div class="bg-brand-light p-8 rounded-2xl border border-brand-rose/50 hover:shadow-md transition-shadow group">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-brand-rose/50 rounded-full flex items-center justify-center text-brand-accent text-xl mr-4 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-link-slash"></i>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-brand-text mb-1">El mensaje</label>
+                            <textarea id="t-text" rows="3" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:border-brand-accent outline-none resize-none" required></textarea>
                         </div>
-                        <h3 class="font-heading text-xl font-bold text-brand-text">Miedo a Soltar y Dependencia</h3>
-                    </div>
-                    <p class="text-brand-text/80">Te aterra la soledad o el abandono, lo que a veces te lleva a conformarte con relaciones que te apagan. Entregas todo de ti esperando ser validada, perdiéndote en el proceso.</p>
-                </div>
-
-                <!-- Tema 3 -->
-                <div class="bg-brand-light p-8 rounded-2xl border border-brand-rose/50 hover:shadow-md transition-shadow group">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-brand-rose/50 rounded-full flex items-center justify-center text-brand-accent text-xl mr-4 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-mask"></i>
+                        <div class="flex justify-end space-x-3">
+                            <button type="button" id="btn-cancel-testimonio" class="px-4 py-2 text-brand-text hover:bg-brand-rose rounded-md">Cancelar</button>
+                            <button type="submit" class="px-4 py-2 bg-brand-accent text-white rounded-md hover:bg-brand-text">Guardar</button>
                         </div>
-                        <h3 class="font-heading text-xl font-bold text-brand-text">El Peso de "No ser Suficiente"</h3>
-                    </div>
-                    <p class="text-brand-text/80">Tienes una voz interna que es tu peor crítica. Por más que te esfuerces, sientes que nunca es suficiente. Te saboteas porque en el fondo, una parte de ti duda de tu propio valor.</p>
+                    </form>
                 </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="admin-testimonials-list"></div>
+            </div>
 
-                <!-- Tema 4 -->
-                <div class="bg-brand-light p-8 rounded-2xl border border-brand-rose/50 hover:shadow-md transition-shadow group">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-brand-rose/50 rounded-full flex items-center justify-center text-brand-accent text-xl mr-4 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-cloud-moon"></i>
+            <div id="view-textos" class="hidden-view bg-white rounded-2xl shadow-sm p-6 border border-brand-rose">
+                <h2 class="text-2xl font-heading font-bold text-brand-text mb-6">Cambiar Textos y Nombre de Plataforma</h2>
+                <form id="admin-texts-form" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-bold text-brand-text mb-1">Nombre de la Plataforma</label>
+                        <input type="text" id="edit-platform-name" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none" required>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-brand-text mb-1">Título Hero Principal</label>
+                            <textarea id="edit-hero_title" rows="3" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none resize-none" required></textarea>
                         </div>
-                        <h3 class="font-heading text-xl font-bold text-brand-text">Ansiedad y Heridas del Pasado</h3>
+                        <div>
+                            <label class="block text-sm font-medium text-brand-text mb-1">Subtítulo Hero</label>
+                            <textarea id="edit-hero_subtitle" rows="3" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none resize-none" required></textarea>
+                        </div>
                     </div>
-                    <p class="text-brand-text/80">Hay dolores de tu historia que siguen disparando alertas en tu cuerpo hoy. Te cuesta apagar la mente en las noches, vives en constante alerta y sientes que el pasado define tu presente.</p>
-                </div>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-brand-text mb-1">Tarjeta 1 (Título)</label>
+                            <input type="text" id="edit-card1_title" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none">
+                            <label class="block text-xs font-medium text-brand-text/70 mt-1 mb-1">Texto</label>
+                            <textarea id="edit-card1_text" rows="2" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none text-sm"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-brand-text mb-1">Tarjeta 2 (Título)</label>
+                            <input type="text" id="edit-card2_title" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none">
+                            <label class="block text-xs font-medium text-brand-text/70 mt-1 mb-1">Texto</label>
+                            <textarea id="edit-card2_text" rows="2" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none text-sm"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-brand-text mb-1">Tarjeta 3 (Título)</label>
+                            <input type="text" id="edit-card3_title" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none">
+                            <label class="block text-xs font-medium text-brand-text/70 mt-1 mb-1">Texto</label>
+                            <textarea id="edit-card3_text" rows="2" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none text-sm"></textarea>
+                        </div>
+                    </div>
+                    <div class="border-t pt-4">
+                        <h3 class="font-bold text-lg mb-3">Sección Sobre Mí</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-brand-text mb-1">Título Sobre Mí</label>
+                                <input type="text" id="edit-about_title" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none">
+                            </div>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-text/70 mb-1">Párrafo 1</label>
+                                    <textarea id="edit-about_p1" rows="3" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none text-sm"></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-text/70 mb-1">Párrafo 2</label>
+                                    <textarea id="edit-about_p2" rows="3" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none text-sm"></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-text/70 mb-1">Párrafo 3</label>
+                                    <textarea id="edit-about_p3" rows="3" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none text-sm"></textarea>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-brand-text mb-1">Cita Destacada</label>
+                                <input type="text" id="edit-about_quote" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="bg-brand-accent text-white font-bold px-6 py-3 rounded-lg hover:bg-brand-text transition-colors">
+                        Guardar Cambios de Texto
+                    </button>
+                </form>
             </div>
-            
-            <div class="mt-12 text-center">
-                <p class="text-brand-accent font-semibold italic text-lg px-4 py-3 bg-brand-rose/30 inline-block rounded-full">
-                    Si te identificas con esto, respira hondo. Estás en el lugar correcto para empezar a cambiarlo.
-                </p>
-            </div>
-        </div>
-    </section>
 
-    <section id="sobre-mi" class="py-24">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center gap-16">
-                <div class="md:w-1/2 relative">
-                    <!-- Marco decorativo -->
-                    <div class="absolute inset-0 bg-brand-peach rounded-[2rem] transform translate-x-4 translate-y-4"></div>
-                    <!-- Placeholder de imagen (Mujer cálida, sonriente, ambiente relajado) -->
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="La Vichiya - Asesora de Bienestar" class="relative z-10 rounded-[2rem] object-cover w-full h-[500px] shadow-xl">
+            <div id="view-fotos" class="hidden-view bg-white rounded-2xl shadow-sm p-6 border border-brand-rose">
+                <h2 class="text-2xl font-heading font-bold text-brand-text mb-2">Cambiar Fotos de la Plataforma (Formato JPG)</h2>
+                <p class="text-sm text-brand-text/70 mb-6">Puedes subir archivos JPG locales desde tu dispositivo o ingresar una URL directa de imagen.</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-brand-light p-5 rounded-2xl border border-brand-rose">
+                        <h3 class="font-bold mb-3 text-brand-accent">Foto Principal (Sobre Mí)</h3>
+                        <img id="preview-img-about" src="" class="w-full h-40 object-cover rounded-xl mb-4" onerror="this.src='https://placehold.co/400x300/f4e3e3/4a403a?text=Sin+Foto';">
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-bold text-brand-text mb-1">Subir archivo JPG local:</label>
+                                <input type="file" accept=".jpg, .jpeg, image/jpeg" class="file-uploader w-full text-xs text-brand-text file:mr-2 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-accent file:text-white hover:file:bg-brand-text cursor-pointer" data-target="about">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-brand-text mb-1">O pegar URL de imagen:</label>
+                                <input type="url" id="url-img-about" class="w-full px-3 py-1.5 text-xs rounded-md border border-gray-300 outline-none" placeholder="https://...">
+                                <button type="button" class="mt-2 w-full bg-brand-text text-white text-xs py-1.5 rounded-md btn-apply-url" data-target="about">Aplicar URL</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-brand-light p-5 rounded-2xl border border-brand-rose">
+                        <h3 class="font-bold mb-3 text-brand-accent">Foto Programa 1 (Renacer)</h3>
+                        <img id="preview-img-service1" src="" class="w-full h-40 object-cover rounded-xl mb-4" onerror="this.src='https://placehold.co/400x300/f4e3e3/4a403a?text=Sin+Foto';">
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-bold text-brand-text mb-1">Subir archivo JPG local:</label>
+                                <input type="file" accept=".jpg, .jpeg, image/jpeg" class="file-uploader w-full text-xs text-brand-text file:mr-2 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-accent file:text-white hover:file:bg-brand-text cursor-pointer" data-target="service1">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-brand-text mb-1">O pegar URL de imagen:</label>
+                                <input type="url" id="url-img-service1" class="w-full px-3 py-1.5 text-xs rounded-md border border-gray-300 outline-none" placeholder="https://...">
+                                <button type="button" class="mt-2 w-full bg-brand-text text-white text-xs py-1.5 rounded-md btn-apply-url" data-target="service1">Aplicar URL</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-brand-light p-5 rounded-2xl border border-brand-rose">
+                        <h3 class="font-bold mb-3 text-brand-accent">Foto Mentoría 2</h3>
+                        <img id="preview-img-service2" src="" class="w-full h-40 object-cover rounded-xl mb-4" onerror="this.src='https://placehold.co/400x300/f4e3e3/4a403a?text=Sin+Foto';">
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-bold text-brand-text mb-1">Subir archivo JPG local:</label>
+                                <input type="file" accept=".jpg, .jpeg, image/jpeg" class="file-uploader w-full text-xs text-brand-text file:mr-2 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-accent file:text-white hover:file:bg-brand-text cursor-pointer" data-target="service2">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-brand-text mb-1">O pegar URL de imagen:</label>
+                                <input type="url" id="url-img-service2" class="w-full px-3 py-1.5 text-xs rounded-md border border-gray-300 outline-none" placeholder="https://...">
+                                <button type="button" class="mt-2 w-full bg-brand-text text-white text-xs py-1.5 rounded-md btn-apply-url" data-target="service2">Aplicar URL</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="md:w-1/2">
-                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-brand-text mb-6">No estás rota, estás en transformación.</h2>
-                    <p class="mb-4 text-lg">Soy La Vichiya. Sé lo que se siente estar atrapada en patrones dolorosos, sentir que el pasado dicta tu futuro y que crear hábitos saludables es una montaña imposible de escalar cuando por dentro hay tormenta.</p>
-                    <p class="mb-4 text-lg">Mi enfoque no es el "positivismo tóxico". Entraremos juntas a observar el dolor o el trauma, le daremos el respeto que merece, y desde ahí, con herramientas de <strong>reprogramación mental</strong>, limpiaremos el camino.</p>
-                    <p class="mb-8 text-lg">Mi compromiso contigo es resultados. Quiero verte sonreír desde el alma, despertar con rutinas que te hagan sentir viva y segura en tu propia piel. Vamos a construir tu mejor versión, un paso a la vez.</p>
-                    
-                    <div class="border-l-4 border-brand-accent pl-6 py-2 italic text-brand-text/70 text-lg">
-                        "El dolor es inevitable, pero el sufrimiento prolongado es opcional cuando tienes las herramientas y el acompañamiento adecuado."
+            </div>
+
+            <div id="view-redes" class="hidden-view bg-white rounded-2xl shadow-sm p-6 border border-brand-rose">
+                <h2 class="text-2xl font-heading font-bold text-brand-text mb-2">Gestión de Redes Sociales</h2>
+                <p class="text-sm text-brand-text/70 mb-6">Ingresa los enlaces completos (URLs) para cada red social que deseas mostrar en tu plataforma.</p>
+                <form id="admin-social-form" class="max-w-xl space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-brand-text mb-1"><i class="fab fa-instagram text-pink-600 mr-2 text-lg"></i> Enlace de Instagram</label>
+                        <input type="url" id="social-instagram" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none" placeholder="https://instagram.com/tu-usuario">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-brand-text mb-1"><i class="fab fa-facebook text-blue-600 mr-2 text-lg"></i> Enlace de Facebook</label>
+                        <input type="url" id="social-facebook" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none" placeholder="https://facebook.com/tu-pagina">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-brand-text mb-1"><i class="fab fa-tiktok text-black mr-2 text-lg"></i> Enlace de TikTok</label>
+                        <input type="url" id="social-tiktok" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none" placeholder="https://tiktok.com/@tu-usuario">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-brand-text mb-1"><i class="fab fa-whatsapp text-green-600 mr-2 text-lg"></i> Enlace de WhatsApp</label>
+                        <input type="url" id="social-whatsapp" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none" placeholder="https://wa.me/506XXXXXXXX">
+                    </div>
+                    <button type="submit" class="bg-brand-accent text-white font-bold px-6 py-3 rounded-lg hover:bg-brand-text transition-colors">
+                        Guardar Enlaces de Redes
+                    </button>
+                </form>
+            </div>
+
+            <div id="view-seguridad" class="hidden-view bg-white rounded-2xl shadow-sm p-6 border border-brand-rose">
+                <h2 class="text-2xl font-heading font-bold text-brand-text mb-2">Contraseña y Reglas de Seguridad (Firestore Rules)</h2>
+                <p class="text-sm text-brand-text/70 mb-6">Actualiza tu contraseña de acceso o revisa las reglas de seguridad recomendadas para proteger tu base de datos y mensajes de asesoría.</p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <form id="admin-password-form" class="space-y-4 bg-brand-light/50 p-6 rounded-2xl border border-brand-rose">
+                        <h3 class="font-bold text-brand-text text-lg mb-2"><i class="fas fa-lock mr-2 text-brand-accent"></i>Cambiar Contraseña</h3>
+                        <div>
+                            <label class="block text-sm font-medium text-brand-text mb-1">Contraseña Actual</label>
+                            <input type="password" id="pass-current" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none bg-white" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-brand-text mb-1">Nueva Contraseña</label>
+                            <input type="password" id="pass-new" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none bg-white" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-brand-text mb-1">Confirmar Nueva Contraseña</label>
+                            <input type="password" id="pass-confirm" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-brand-accent outline-none bg-white" required>
+                        </div>
+                        <button type="submit" class="bg-brand-accent text-white font-bold px-6 py-3 rounded-lg hover:bg-brand-text transition-colors w-full">
+                            Actualizar Contraseña
+                        </button>
+                        <div id="pass-msg" class="hidden text-sm font-medium mt-2"></div>
+                    </form>
+
+                    <div class="bg-brand-light/50 p-6 rounded-2xl border border-brand-rose">
+                        <h3 class="font-bold text-brand-text text-lg mb-2"><i class="fas fa-shield-alt mr-2 text-brand-accent"></i>Nuevas Reglas de Seguridad Firestore</h3>
+                        <p class="text-xs text-brand-text/70 mb-3">Copia estas reglas en la consola de Firebase para garantizar que solo usuarios autenticados puedan leer y escribir en tus colecciones de asesoría:</p>
+                        <pre class="bg-brand-text text-brand-light p-3 rounded-xl text-xs font-mono overflow-x-auto select-all">
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /artifacts/{appId}/public/data/{document=**} {
+      allow read, write: if request.auth != null;
+    }
+    match /artifacts/{appId}/users/{userId}/{document=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
+                        </pre>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="servicios" class="py-24 bg-brand-text text-brand-light">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Mi Acompañamiento para Ti</h2>
-                <p class="text-brand-light/80 max-w-2xl mx-auto text-lg">Programas diseñados para abrazar tu vulnerabilidad y convertirla en la base de tu nueva fortaleza.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Servicio 1 -->
-                <div class="group bg-white/10 p-8 rounded-2xl border border-brand-light/20 backdrop-blur-sm hover:bg-white/15 transition-all duration-300 flex flex-col h-full">
-                    <div class="w-full h-48 mb-6 overflow-hidden rounded-xl">
-                         <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mujer en paz, programa Renacer" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <h3 class="font-heading text-2xl font-bold text-brand-peach mb-4">Programa "Renacer"</h3>
-                    <p class="mb-6 opacity-90 flex-grow">Ideal para mujeres atravesando dolor agudo, separaciones o traumas recientes. Contención emocional, primeros auxilios psicológicos y reprogramación inicial para encontrar calma.</p>
-                    <ul class="space-y-3 mb-8 opacity-90">
-                        <li class="flex items-start"><i class="fas fa-check text-brand-peach mt-1 mr-3"></i> 12 sesiones de acompañamiento profundo.</li>
-                        <li class="flex items-start"><i class="fas fa-check text-brand-peach mt-1 mr-3"></i> Audios de reprogramación nocturna.</li>
-                        <li class="flex items-start"><i class="fas fa-check text-brand-peach mt-1 mr-3"></i> Soporte por WhatsApp para crisis.</li>
-                    </ul>
-                    <a href="#contacto" class="mt-auto text-brand-peach hover:text-white font-semibold flex items-center transition-colors w-max">
-                        Saber más <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-
-                <!-- Servicio 2 -->
-                <div class="group bg-white/10 p-8 rounded-2xl border border-brand-light/20 backdrop-blur-sm hover:bg-white/15 transition-all duration-300 flex flex-col h-full">
-                    <div class="w-full h-48 mb-6 overflow-hidden rounded-xl">
-                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mujer construyendo hábitos, Mentoría Construye tu Luz" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <h3 class="font-heading text-2xl font-bold text-brand-rose mb-4">Mentoría "Construye tu Luz"</h3>
-                    <p class="mb-6 opacity-90 flex-grow">Enfocado en la creación de hábitos, superación de autosabotaje y rediseño de vida. Para cuando estás lista para avanzar pero no sabes cómo sostenerlo.</p>
-                    <ul class="space-y-3 mb-8 opacity-90">
-                        <li class="flex items-start"><i class="fas fa-check text-brand-rose mt-1 mr-3"></i> 8 sesiones de enfoque en resultados y hábitos.</li>
-                        <li class="flex items-start"><i class="fas fa-check text-brand-rose mt-1 mr-3"></i> Diseño de rutinas matutinas/nocturnas personalizadas.</li>
-                        <li class="flex items-start"><i class="fas fa-check text-brand-rose mt-1 mr-3"></i> Trackers de bienestar y reprogramación activa.</li>
-                    </ul>
-                    <a href="#contacto" class="mt-auto text-brand-rose hover:text-white font-semibold flex items-center transition-colors w-max">
-                        Saber más <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonios" class="py-24 bg-brand-light relative overflow-hidden">
-        <div class="blob-bg bg-brand-rose w-[30rem] h-[30rem] rounded-full top-20 right-[-10%] opacity-40"></div>
-        
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="font-heading text-3xl md:text-4xl font-bold text-brand-text mb-4">Voces que Sanaron</h2>
-                <p class="text-brand-text/80 max-w-2xl mx-auto text-lg">El cambio es posible. Ellas ya caminaron este sendero.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Testimonio 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm relative">
-                    <i class="fas fa-quote-left text-4xl text-brand-peach/40 absolute top-6 left-6"></i>
-                    <p class="relative z-10 text-brand-text/80 italic mb-6 mt-6">"Llegué a La Vichiya sintiéndome destrozada tras una pérdida. Su empatía fue mi refugio. Hoy no solo sané, sino que implementé hábitos de meditación que me cambiaron la vida. Es pura luz y disciplina."</p>
-                    <div class="font-bold text-brand-accent">- María C.</div>
-                </div>
-                <!-- Testimonio 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm relative">
-                    <i class="fas fa-quote-left text-4xl text-brand-peach/40 absolute top-6 left-6"></i>
-                    <p class="relative z-10 text-brand-text/80 italic mb-6 mt-6">"Siempre abandonaba todo por ansiedad. El enfoque de reprogramación de La Vichiya me ayudó a entender por qué me saboteaba. Sus rutinas son fáciles y compasivas. Logré resultados sin castigarme."</p>
-                    <div class="font-bold text-brand-accent">- Laura S.</div>
-                </div>
-                <!-- Testimonio 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm relative">
-                    <i class="fas fa-quote-left text-4xl text-brand-peach/40 absolute top-6 left-6"></i>
-                    <p class="relative z-10 text-brand-text/80 italic mb-6 mt-6">"Es increíble cómo puede ser tan cálida para escucharte llorar y tan firme para decirte: 'ok, ¿qué vamos a hacer hoy por ti?'. Me ayudó a salir del hoyo y a construir mi propia escalera."</p>
-                    <div class="font-bold text-brand-accent">- Ana P.</div>
-                </div>
-                <!-- Testimonio 4 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm relative">
-                    <i class="fas fa-quote-left text-4xl text-brand-peach/40 absolute top-6 left-6"></i>
-                    <p class="relative z-10 text-brand-text/80 italic mb-6 mt-6">"Pensé que mi pasado me definiría para siempre. La Vichiya me tomó de la mano y me enseñó que mis cicatrices son mi mayor fortaleza. Su acompañamiento es oro puro."</p>
-                    <div class="font-bold text-brand-accent">- Sofía M.</div>
-                </div>
-                <!-- Testimonio 5 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm relative">
-                    <i class="fas fa-quote-left text-4xl text-brand-peach/40 absolute top-6 left-6"></i>
-                    <p class="relative z-10 text-brand-text/80 italic mb-6 mt-6">"Intenté mil cosas antes, pero la reprogramación mental que hacemos aquí cambió las reglas del juego. Por primera vez en años, siento que yo tengo el control de mi mente."</p>
-                    <div class="font-bold text-brand-accent">- Elena R.</div>
-                </div>
-                <!-- Testimonio 6 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm relative">
-                    <i class="fas fa-quote-left text-4xl text-brand-peach/40 absolute top-6 left-6"></i>
-                    <p class="relative z-10 text-brand-text/80 italic mb-6 mt-6">"Llegué buscando paz y encontré un espacio seguro y un mapa claro. Los hábitos que construimos juntas me sostienen todos los días. Eres un ángel en mi camino."</p>
-                    <div class="font-bold text-brand-accent">- Valeria T.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-brand-accent relative overflow-hidden">
-        <!-- Fondo decorativo sutil -->
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <i class="fas fa-star text-brand-peach text-3xl mb-6"></i>
-            <h2 class="font-heading text-3xl md:text-4xl font-bold text-white leading-relaxed italic mb-8">
-                "La sanación no es lineal, ni tienes que hacerla sola. Cada pequeño paso que das hoy es un acto de amor revolucionario hacia la mujer que serás mañana."
-            </h2>
-            <p class="text-brand-peach font-semibold text-xl uppercase tracking-widest">— La Vichiya</p>
-        </div>
-    </section>
-
-    <section id="contacto" class="py-24 bg-brand-peach/20">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="font-heading text-3xl md:text-5xl font-bold text-brand-text mb-6">Da el primer paso hacia ti misma</h2>
-            <p class="text-xl text-brand-text/80 mb-10">Agenda una sesión de descubrimiento de 30 minutos sin costo. Hablaremos de tu momento actual y trazaremos un pequeño mapa de ruta para tu bienestar.</p>
-            
-            <form class="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg text-left" id="contact-form">
-                <div class="mb-6">
-                    <label for="name" class="block text-sm font-medium text-brand-text mb-2">Tu nombre hermoso</label>
-                    <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-accent focus:ring focus:ring-brand-accent/20 outline-none transition-all" required placeholder="Ej: Valentina">
-                </div>
-                <div class="mb-6">
-                    <label for="email" class="block text-sm font-medium text-brand-text mb-2">Tu mejor correo</label>
-                    <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-accent focus:ring focus:ring-brand-accent/20 outline-none transition-all" required placeholder="correo@ejemplo.com">
-                </div>
-                <div class="mb-6">
-                    <label for="message" class="block text-sm font-medium text-brand-text mb-2">Cuéntame brevemente, ¿en qué te puedo apoyar hoy?</label>
-                    <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-accent focus:ring focus:ring-brand-accent/20 outline-none transition-all resize-none" placeholder="Siento que necesito ayuda con..."></textarea>
-                </div>
-                <button type="submit" class="w-full bg-brand-accent text-white font-bold py-4 rounded-lg hover:bg-brand-text transition-colors duration-300 shadow-md">
-                    Solicitar Sesión Gratuita
+    <div id="message-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl transform scale-95 transition-transform duration-200">
+            <div class="flex justify-between items-start mb-4">
+                <h3 class="font-heading text-xl font-bold text-brand-text" id="modal-sender-name">Mensaje</h3>
+                <button id="close-modal-btn" class="text-brand-text/50 hover:text-brand-accent transition-colors">
+                    <i class="fas fa-times text-xl"></i>
                 </button>
-                <p id="form-msg" class="text-center mt-4 hidden text-brand-accent font-semibold"></p>
-            </form>
+            </div>
+            <div class="mb-4 text-sm text-brand-text/60">
+                <span id="modal-sender-email" class="font-medium"></span> &bull; <span id="modal-date"></span>
+            </div>
+            <div class="bg-brand-light p-4 rounded-xl border border-brand-rose">
+                <p id="modal-message-body" class="text-brand-text whitespace-pre-wrap"></p>
+            </div>
+            <div class="mt-6 flex justify-end">
+                <button id="close-modal-btn-2" class="bg-brand-accent text-white px-5 py-2 rounded-lg hover:bg-brand-text transition-colors shadow-sm">Cerrar</button>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <footer class="bg-brand-text text-brand-light py-12">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <span class="font-heading font-bold text-2xl text-brand-rose tracking-wide">La Vichiya</span>
-                    <p class="text-brand-light/60 mt-2 text-sm">Acompañamiento compasivo, resultados reales.</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-brand-light hover:text-brand-rose text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-brand-light hover:text-brand-rose text-2xl transition-colors"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="text-brand-light hover:text-brand-rose text-2xl transition-colors"><i class="fab fa-spotify"></i></a>
-                </div>
-            </div>
-            <div class="border-t border-brand-light/20 mt-8 pt-8 text-center text-sm text-brand-light/50">
-                &copy; 2026 La Vichiya. Todos los derechos reservados. <br class="sm:hidden"> Creado con mucho amor.
-            </div>
-        </div>
-    </footer>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBjRO1ioWb2Sq0hOLhpPtoCDmRZwaOypSs",
+            authDomain: "terapia-61ddd.firebaseapp.com",
+            projectId: "terapia-61ddd",
+            storageBucket: "terapia-61ddd.firebasestorage.app",
+            messagingSenderId: "1024701377767",
+            appId: "1:1024701377767:web:950f899b2a97c3e368c642",
+            measurementId: "G-8M2VNZNYTJ"
+        };
+
+        try {
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            console.log("Firebase initialized successfully with credentials.");
+        } catch (e) {
+            console.warn("Firebase initialization warning:", e);
+        }
+    </script>
 
     <script>
-        // Funcionalidad Menú Móvil
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
+        // --- 1. ESTADO Y CONFIGURACIÓN INICIAL ---
+        const defaultTestimonials = [
+            { id: 1, name: "María C.", text: "Llegué a La Vichiya sintiéndome destrozada tras una pérdida. Su empatía fue mi refugio. Hoy no solo sané, sino que implementé hábitos de meditación que me cambiaron la vida. Es pura luz y disciplina." },
+            { id: 2, name: "Laura S.", text: "Siempre abandonaba todo por ansiedad. El enfoque de reprogramación de La Vichiya me ayudó a entender por qué me saboteaba. Sus rutinas son fáciles y compasivas. Logré resultados sin castigarme." },
+            { id: 3, name: "Ana P.", text: "Es increíble cómo puede ser tan cálida para escucharte llorar y tan firme para decirte: 'ok, ¿qué vamos a hacer hoy por ti?'. Me ayudó a salir del hoyo y a construir mi propia escalera." },
+            { id: 4, name: "Sofía M.", text: "Pensé que mi pasado me definiría para siempre. La Vichiya me tomó de la mano y me enseñó que mis cicatrices son mi mayor fortaleza. Su acompañamiento es oro puro." },
+            { id: 5, name: "Elena R.", text: "Intenté mil cosas antes, pero la reprogramación mental que hacemos aquí cambió las reglas del juego. Por primera vez en años, siento que yo tengo el control de mi mente." },
+            { id: 6, name: "Valeria T.", text: "Llegué buscando paz y encontré un espacio seguro y un mapa claro. Los hábitos que construimos juntas me sostienen todos los días. Eres un ángel en mi camino." }
+        ];
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
+        const defaultTexts = {
+            platform_name: "La Vichiya",
+            hero_title: 'Sana tus heridas, <br><span class="text-brand-accent italic">reprograma tu mente</span> <br>y recupera tu poder.',
+            hero_subtitle: 'Hola hermosa. Soy La Vichiya. Te acompaño a atravesar el dolor sin soltarte la mano, transformando traumas en fuerza y construyendo juntas hábitos que nutran tu nueva vida. Un espacio seguro, empático y enfocado en que vuelvas a florecer.',
+            card1_title: 'Empatía Profunda',
+            card1_text: 'Entiendo el peso de las heridas. Aquí no hay prisas ni juicios, solo un abrazo virtual y comprensión absoluta de tus tiempos.',
+            card2_title: 'Reprogramación Real',
+            card2_text: 'No solo hablamos. Cambiamos la forma en que tu cerebro procesa el dolor y el miedo, instalando nuevas creencias que te empoderen.',
+            card3_title: 'Hábitos Sostenibles',
+            card3_text: 'La sanación requiere acción diaria. Construiremos rutinas de amor propio y cuidado que sean realistas y transformadoras para tu día a día.',
+            about_title: 'No estás rota, estás en transformación.',
+            about_p1: 'Sé lo que se siente estar atrapada en patrones dolorosos y sentir que crear hábitos saludables es imposible cuando hay tormenta interna.',
+            about_p2: 'Mi enfoque no es el "positivismo tóxico". Entraremos juntas a observar el dolor, y desde ahí, con reprogramación mental, limpiaremos el camino.',
+            about_p3: 'Quiero verte sonreír desde el alma. Vamos a construir tu mejor versión, un paso a la vez.',
+            about_quote: '"El dolor es inevitable, pero el sufrimiento prolongado es opcional."',
+            services_heading: 'Mi Acompañamiento para Ti',
+            services_subheading: 'Programas diseñados para abrazar tu vulnerabilidad.',
+            service1_title: 'Programa "Renacer"',
+            service1_desc: 'Ideal para mujeres atravesando dolor agudo o separaciones recientes.',
+            service2_title: 'Mentoría "Construye tu Luz"',
+            service2_desc: 'Para cuando estás lista para avanzar y sostener nuevos hábitos.'
+        };
 
-        // Efecto Navbar al hacer scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 20) {
-                nav.classList.add('shadow-sm');
+        const defaultImages = {
+            about: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            service1: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            service2: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        };
+
+        const defaultSocials = {
+            instagram: "https://instagram.com",
+            facebook: "https://facebook.com",
+            tiktok: "https://tiktok.com",
+            whatsapp: "https://wa.me/"
+        };
+
+        if (!localStorage.getItem('vichiya_testimonials')) localStorage.setItem('vichiya_testimonials', JSON.stringify(defaultTestimonials));
+        if (!localStorage.getItem('vichiya_messages')) localStorage.setItem('vichiya_messages', JSON.stringify([]));
+        if (!localStorage.getItem('vichiya_texts')) localStorage.setItem('vichiya_texts', JSON.stringify(defaultTexts));
+        if (!localStorage.getItem('vichiya_images')) localStorage.setItem('vichiya_images', JSON.stringify(defaultImages));
+        if (!localStorage.getItem('vichiya_socials')) localStorage.setItem('vichiya_socials', JSON.stringify(defaultSocials));
+        if (!localStorage.getItem('vichiya_admin_pass')) localStorage.setItem('vichiya_admin_pass', 'vichiya2026');
+
+        function getData(key) { return JSON.parse(localStorage.getItem('vichiya_' + key)); }
+        function saveData(key, data) {
+            localStorage.setItem('vichiya_' + key, JSON.stringify(data));
+            applyPlatformContent();
+        }
+
+        // --- 2. APLICAR CONTENIDOS AL SITIO PÚBLICO ---
+        function applyPlatformContent() {
+            const texts = getData('texts');
+            const images = getData('images');
+            const socials = getData('socials');
+
+            document.querySelectorAll('.platform-name').forEach(el => el.innerText = texts.platform_name);
+            document.getElementById('meta-title').innerText = `${texts.platform_name} | Bienestar y Reprogramación Mental`;
+
+            for (let key in texts) {
+                const el = document.querySelector(`[data-editable="${key}"]`);
+                if (el) {
+                    if (key === 'hero_title') el.innerHTML = texts[key];
+                    else el.innerText = texts[key];
+                }
+            }
+
+            const imgAbout = document.getElementById('img-about');
+            if(imgAbout) imgAbout.src = images.about;
+            const imgS1 = document.getElementById('img-service1');
+            if(imgS1) imgS1.src = images.service1;
+            const imgS2 = document.getElementById('img-service2');
+            if(imgS2) imgS2.src = images.service2;
+
+            const socialContainer = document.getElementById('public-social-links');
+            if(socialContainer) {
+                socialContainer.innerHTML = '';
+                if(socials.instagram) socialContainer.innerHTML += `<a href="${socials.instagram}" target="_blank" class="text-brand-light hover:text-brand-rose text-2xl transition-colors"><i class="fab fa-instagram"></i></a>`;
+                if(socials.facebook) socialContainer.innerHTML += `<a href="${socials.facebook}" target="_blank" class="text-brand-light hover:text-brand-rose text-2xl transition-colors"><i class="fab fa-facebook"></i></a>`;
+                if(socials.tiktok) socialContainer.innerHTML += `<a href="${socials.tiktok}" target="_blank" class="text-brand-light hover:text-brand-rose text-2xl transition-colors"><i class="fab fa-tiktok"></i></a>`;
+                if(socials.whatsapp) socialContainer.innerHTML += `<a href="${socials.whatsapp}" target="_blank" class="text-brand-light hover:text-brand-rose text-2xl transition-colors"><i class="fab fa-whatsapp"></i></a>`;
+            }
+
+            renderPublicTestimonials();
+        }
+
+        // --- 3. ENRUTAMIENTO SPA Y AUTH ADMIN ---
+        function checkRoute() {
+            const hash = window.location.hash;
+            const publicView = document.getElementById('public-view');
+            const adminLoginView = document.getElementById('admin-login-view');
+            const adminDashboardView = document.getElementById('admin-dashboard-view');
+
+            const isAuth = sessionStorage.getItem('vichiya_auth') === 'true';
+
+            if (hash === '#/admin') {
+                publicView.classList.add('hidden-view');
+                if (isAuth) {
+                    adminLoginView.classList.add('hidden-view');
+                    adminDashboardView.classList.remove('hidden-view');
+                    renderAdminMessages();
+                    renderAdminTestimonials();
+                    loadAdminFormsData();
+                } else {
+                    adminDashboardView.classList.add('hidden-view');
+                    adminLoginView.classList.remove('hidden-view');
+                }
+                window.scrollTo(0, 0);
+                document.body.style.backgroundColor = '#f4e3e3';
             } else {
-                nav.classList.remove('shadow-sm');
+                publicView.classList.remove('hidden-view');
+                adminLoginView.classList.add('hidden-view');
+                adminDashboardView.classList.add('hidden-view');
+                document.body.style.backgroundColor = '#fdfbf7';
+                applyPlatformContent();
+            }
+        }
+
+        window.addEventListener('hashchange', checkRoute);
+        document.getElementById('floating-admin-btn').addEventListener('click', () => { window.location.hash = '#/admin'; });
+        document.getElementById('btn-return-site').addEventListener('click', () => { window.location.hash = ''; });
+        document.getElementById('btn-back-home').addEventListener('click', () => { window.location.hash = ''; });
+
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const pass = document.getElementById('admin-pass-input').value;
+            const storedPass = localStorage.getItem('vichiya_admin_pass') || 'vichiya2026';
+            const errDiv = document.getElementById('login-error');
+
+            if (pass === storedPass) {
+                sessionStorage.setItem('vichiya_auth', 'true');
+                errDiv.classList.add('hidden');
+                document.getElementById('admin-pass-input').value = '';
+                checkRoute();
+            } else {
+                errDiv.innerText = "Contraseña incorrecta. Inténtalo de nuevo (por defecto: vichiya2026).";
+                errDiv.classList.remove('hidden');
             }
         });
 
-        // Simulación envío de formulario (sin alerts)
-        const form = document.getElementById('contact-form');
-        const msg = document.getElementById('form-msg');
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = form.querySelector('button[type="submit"]');
-            const originalText = btn.innerText;
-            
-            btn.innerText = 'Enviando...';
-            btn.classList.add('opacity-70', 'cursor-not-allowed');
-
-            setTimeout(() => {
-                form.reset();
-                btn.innerText = originalText;
-                btn.classList.remove('opacity-70', 'cursor-not-allowed');
-                
-                msg.innerText = "¡Mensaje enviado con amor! Me pondré en contacto contigo pronto.";
-                msg.classList.remove('hidden');
-                
-                setTimeout(() => {
-                    msg.classList.add('hidden');
-                }, 5000);
-            }, 1500);
+        document.getElementById('btn-admin-logout').addEventListener('click', () => {
+            sessionStorage.removeItem('vichiya_auth');
+            window.location.hash = '';
         });
 
-        // Cierre de menú móvil al hacer click en un enlace
-        const mobileLinks = menu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
+        // --- 4. TABS Y GESTIÓN DE VISTAS EN DASHBOARD ---
+        const tabs = ['mensajes', 'testimonios', 'textos', 'fotos', 'redes', 'seguridad'];
+        tabs.forEach(tab => {
+            document.getElementById(`tab-${tab}`).addEventListener('click', () => {
+                tabs.forEach(t => {
+                    document.getElementById(`view-${t}`).classList.add('hidden-view');
+                    const btnTab = document.getElementById(`tab-${t}`);
+                    btnTab.classList.remove('bg-white', 'border-b-2', 'border-brand-accent', 'shadow-sm');
+                    btnTab.classList.add('bg-white/50', 'text-brand-text/70');
+                });
+                document.getElementById(`view-${tab}`).classList.remove('hidden-view');
+                const activeBtn = document.getElementById(`tab-${tab}`);
+                activeBtn.classList.add('bg-white', 'border-b-2', 'border-brand-accent', 'shadow-sm');
+                activeBtn.classList.remove('bg-white/50', 'text-brand-text/70');
             });
         });
+
+        // --- 5. FUNCIONES ADMINISTRATIVAS ---
+        function renderAdminMessages() {
+            const tbody = document.getElementById('admin-messages-list');
+            const noMessages = document.getElementById('no-messages');
+            const countLabel = document.getElementById('inbox-count');
+            const msgs = getData('messages') || [];
+            
+            tbody.innerHTML = '';
+            countLabel.innerText = `${msgs.length} mensajes`;
+
+            if (msgs.length === 0) {
+                tbody.parentElement.classList.add('hidden');
+                noMessages.classList.remove('hidden');
+                return;
+            }
+            tbody.parentElement.classList.remove('hidden');
+            noMessages.classList.add('hidden');
+
+            msgs.forEach(m => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-brand-rose/10 transition-colors';
+                const shortMsg = m.message.length > 50 ? m.message.substring(0, 50) + '...' : m.message;
+                tr.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-brand-text/80">${m.date}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-brand-text">${m.name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-brand-text/80"><a href="mailto:${m.email}" class="text-brand-accent hover:underline">${m.email}</a></td>
+                    <td class="px-6 py-4 text-sm text-brand-text/80 cursor-pointer hover:text-brand-text" onclick="openMessageModal(${m.id})">${shortMsg} <i class="fas fa-eye text-brand-peach ml-1"></i></td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button onclick="deleteMessage(${m.id})" class="text-red-400 hover:text-red-600 transition-colors p-2"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        window.deleteMessage = function(id) {
+            if(confirm("¿Segura que deseas borrar este mensaje?")) {
+                let msgs = getData('messages').filter(m => m.id !== id);
+                saveData('messages', msgs);
+                renderAdminMessages();
+            }
+        }
+
+        function renderAdminTestimonials() {
+            const container = document.getElementById('admin-testimonials-list');
+            const testimonios = getData('testimonials');
+            container.innerHTML = '';
+
+            testimonios.forEach(t => {
+                const card = document.createElement('div');
+                card.className = 'bg-brand-light p-5 rounded-xl border border-brand-rose relative group';
+                card.innerHTML = `
+                    <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-white/80 backdrop-blur rounded-md shadow-sm flex space-x-1 p-1">
+                        <button onclick="editTestimonio(${t.id})" class="p-1.5 text-brand-earth hover:text-brand-accent rounded"><i class="fas fa-edit"></i></button>
+                        <button onclick="deleteTestimonio(${t.id})" class="p-1.5 text-red-400 hover:text-red-600 rounded"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                    <p class="text-sm text-brand-text/80 italic mb-4 line-clamp-4">"${t.text}"</p>
+                    <div class="font-bold text-sm text-brand-accent">- ${t.name}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        const formTestimonioContainer = document.getElementById('form-testimonio-container');
+        document.getElementById('btn-add-testimonio').addEventListener('click', () => {
+            document.getElementById('admin-testimonio-form').reset();
+            document.getElementById('testimonio-id').value = '';
+            document.getElementById('form-testimonio-title').innerText = "Añadir Nuevo Testimonio";
+            formTestimonioContainer.classList.remove('hidden');
+        });
+        document.getElementById('btn-cancel-testimonio').addEventListener('click', () => {
+            formTestimonioContainer.classList.add('hidden');
+        });
+
+        document.getElementById('admin-testimonio-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const id = document.getElementById('testimonio-id').value;
+            const name = document.getElementById('t-name').value;
+            const text = document.getElementById('t-text').value;
+            let testimonios = getData('testimonials');
+
+            if(id) {
+                const idx = testimonios.findIndex(t => t.id == id);
+                if(idx !== -1) testimonios[idx] = { ...testimonios[idx], name, text };
+            } else {
+                testimonios.push({ id: Date.now(), name, text });
+            }
+            saveData('testimonials', testimonios);
+            formTestimonioContainer.classList.add('hidden');
+            renderAdminTestimonials();
+        });
+
+        window.editTestimonio = function(id) {
+            const t = getData('testimonials').find(t => t.id === id);
+            if(t) {
+                document.getElementById('testimonio-id').value = t.id;
+                document.getElementById('t-name').value = t.name;
+                document.getElementById('t-text').value = t.text;
+                document.getElementById('form-testimonio-title').innerText = "Editar Testimonio";
+                formTestimonioContainer.classList.remove('hidden');
+            }
+        }
+
+        window.deleteTestimonio = function(id) {
+            if(confirm("¿Eliminar este testimonio?")) {
+                let testimonios = getData('testimonials').filter(t => t.id !== id);
+                saveData('testimonials', testimonios);
+                renderAdminTestimonials();
+            }
+        }
+
+        function renderPublicTestimonials() {
+            const container = document.getElementById('public-testimonials-container');
+            if(!container) return;
+            const testimonios = getData('testimonials');
+            container.innerHTML = '';
+            testimonios.forEach(t => {
+                const card = document.createElement('div');
+                card.className = 'bg-white p-8 rounded-2xl shadow-sm relative fade-in';
+                card.innerHTML = `
+                    <i class="fas fa-quote-left text-4xl text-brand-peach/40 absolute top-6 left-6"></i>
+                    <p class="relative z-10 text-brand-text/80 italic mb-6 mt-6">"${t.text}"</p>
+                    <div class="font-bold text-brand-accent">- ${t.name}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function loadAdminFormsData() {
+            const texts = getData('texts');
+            document.getElementById('edit-platform-name').value = texts.platform_name || '';
+            for(let k in texts) {
+                const input = document.getElementById(`edit-${k}`);
+                if(input) input.value = texts[k];
+            }
+
+            const socials = getData('socials');
+            for(let k in socials) {
+                const input = document.getElementById(`social-${k}`);
+                if(input) input.value = socials[k];
+            }
+
+            const images = getData('images');
+            for(let k in images) {
+                const prev = document.getElementById(`preview-img-${k}`);
+                if(prev) prev.src = images[k];
+                const urlInput = document.getElementById(`url-img-${k}`);
+                if(urlInput) urlInput.value = images[k];
+            }
+        }
+
+        document.getElementById('admin-texts-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            let texts = getData('texts');
+            texts.platform_name = document.getElementById('edit-platform-name').value;
+            for(let k in texts) {
+                if(k !== 'platform_name') {
+                    const input = document.getElementById(`edit-${k}`);
+                    if(input) texts[k] = input.value;
+                }
+            }
+            saveData('texts', texts);
+            alert("¡Textos actualizados exitosamente!");
+        });
+
+        document.getElementById('admin-social-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            let socials = {
+                instagram: document.getElementById('social-instagram').value,
+                facebook: document.getElementById('social-facebook').value,
+                tiktok: document.getElementById('social-tiktok').value,
+                whatsapp: document.getElementById('social-whatsapp').value
+            };
+            saveData('socials', socials);
+            alert("¡Redes sociales actualizadas con éxito!");
+        });
+
+        document.querySelectorAll('.file-uploader').forEach(input => {
+            input.addEventListener('change', function(e) {
+                const target = this.getAttribute('data-target');
+                const file = e.target.files[0];
+                if(file) {
+                    if(!file.type.includes('image/jpeg')) {
+                        alert("Por favor selecciona un archivo en formato JPG válido.");
+                        return;
+                    }
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const base64Str = event.target.result;
+                        let images = getData('images');
+                        images[target] = base64Str;
+                        saveData('images', images);
+                        document.getElementById(`preview-img-${target}`).src = base64Str;
+                        document.getElementById(`url-img-${target}`).value = base64Str;
+                        alert("¡Foto JPG actualizada correctamente!");
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        document.querySelectorAll('.btn-apply-url').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const target = this.getAttribute('data-target');
+                const url = document.getElementById(`url-img-${target}`).value;
+                if(url) {
+                    let images = getData('images');
+                    images[target] = url;
+                    saveData('images', images);
+                    document.getElementById(`preview-img-${target}`).src = url;
+                    alert("¡Imagen actualizada mediante URL!");
+                }
+            });
+        });
+
+        document.getElementById('admin-password-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const current = document.getElementById('pass-current').value;
+            const newPass = document.getElementById('pass-new').value;
+            const confirmPass = document.getElementById('pass-confirm').value;
+            const passMsg = document.getElementById('pass-msg');
+
+            const storedPass = localStorage.getItem('vichiya_admin_pass') || 'vichiya2026';
+
+            if(current !== storedPass) {
+                passMsg.innerText = "La contraseña actual es incorrecta.";
+                passMsg.className = "text-sm font-medium mt-2 text-red-500";
+                passMsg.classList.remove('hidden');
+                return;
+            }
+
+            if(newPass !== confirmPass) {
+                passMsg.innerText = "Las nuevas contraseñas no coinciden.";
+                passMsg.className = "text-sm font-medium mt-2 text-red-500";
+                passMsg.classList.remove('hidden');
+                return;
+            }
+
+            localStorage.setItem('vichiya_admin_pass', newPass);
+            passMsg.innerText = "¡Contraseña actualizada con éxito!";
+            passMsg.className = "text-sm font-medium mt-2 text-green-600";
+            passMsg.classList.remove('hidden');
+            document.getElementById('admin-password-form').reset();
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            const newMsg = {
+                id: Date.now(),
+                date: new Date().toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute:'2-digit' }),
+                name, email, message
+            };
+
+            let msgs = getData('messages') || [];
+            msgs.unshift(newMsg);
+            saveData('messages', msgs);
+
+            document.getElementById('contact-form').reset();
+            const msgBox = document.getElementById('form-msg-container');
+            document.getElementById('form-msg').innerText = `¡Gracias ${name}! Tu mensaje ha sido enviado con amor. Te responderé pronto.`;
+            msgBox.classList.remove('hidden');
+            setTimeout(() => msgBox.classList.add('hidden'), 5000);
+        });
+
+        window.openMessageModal = function(id) {
+            const msg = getData('messages').find(m => m.id === id);
+            if(msg) {
+                document.getElementById('modal-sender-name').innerText = `Mensaje de ${msg.name}`;
+                document.getElementById('modal-sender-email').innerText = msg.email;
+                document.getElementById('modal-date').innerText = msg.date;
+                document.getElementById('modal-message-body').innerText = msg.message;
+                const modal = document.getElementById('message-modal');
+                modal.classList.remove('hidden');
+            }
+        }
+        document.getElementById('close-modal-btn').addEventListener('click', () => document.getElementById('message-modal').classList.add('hidden'));
+        document.getElementById('close-modal-btn-2').addEventListener('click', () => document.getElementById('message-modal').classList.add('hidden'));
+
+        checkRoute();
     </script>
 </body>
 </html>
